@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <script type="text/javascript">
+            safari.application.addEventListener( "message", function(e) {
+                if( e.name === "getSettings" ) {
+                    e.target.page.dispatchMessage( "setSettings", {
+                        boldId: safari.extension.settings.getItem( "boldId" ),
+                        idColor: safari.extension.settings.getItem( "idColor" )
+                    } );
+                }
+            }, false );
+        </script>
+    </head>
+    <body></body>
+</html>
