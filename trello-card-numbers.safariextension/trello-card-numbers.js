@@ -174,9 +174,32 @@ function addNumberToLightboxWhenReady(cardNumber) {
             h2.style.display = 'inline-block';
             h2.style.marginRight = '10px';
 
-            h2.innerHTML = '<span class="' + TCN_CARD_NUMBER + '">' + cardNumber + '</span> (<a href="#" onclick="copyCardNumberAndTitle(); return false;">Copy</a>)';
+            h2.innerHTML = '<span class="' + TCN_CARD_NUMBER + '">' + cardNumber + '</span>';
             obj.insertBefore(h2, obj.lastChild);          
+
+
+            if (settings.showCopy == true)
+            {
+                var copyButton = getByClass("button-link js-copy-card")[0];
+
+                var copyDetailsButton = document.createElement('a');
+                copyDetailsButton.className = 'button-link';
+                copyDetailsButton.href = '#';
+                copyDetailsButton.onclick = function() {
+                    var cardText = getByClass('js-card-detail-title-input')[0].value;
             
+                    // Ew....
+                    // Source http://stackoverflow.com/a/18455088
+                    var copyFrom = document.createElement("textarea");
+                    copyFrom.textContent = cardNumber.trim() + ", " + cardText; // Unsure if its ok to refer to cardNumber from params.
+                    document.body.appendChild(copyFrom);
+                    copyFrom.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(copyFrom);
+                };
+                copyDetailsButton.innerHTML = '<span class="icon-sm icon-card"></span>&nbsp;Copy details</a>';
+                copyButton.parentNode.insertBefore(copyDetailsButton, copyButton.nextSibling); 
+            }            
         }
     }, function (err) {
         null;

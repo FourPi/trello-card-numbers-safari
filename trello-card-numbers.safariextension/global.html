@@ -6,7 +6,8 @@
                 if( e.name === "getSettings" ) {
                     e.target.page.dispatchMessage( "setSettings", {
                         boldId: safari.extension.settings.getItem( "boldId" ),
-                        idColor: safari.extension.settings.getItem( "idColor" )
+                        idColor: safari.extension.settings.getItem( "idColor" ),
+                        showCopy: safari.extension.settings.getItem( "showCopy" )
                     } );
                 }
             }, false );
