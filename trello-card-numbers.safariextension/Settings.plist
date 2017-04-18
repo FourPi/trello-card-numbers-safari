@@ -28,7 +28,7 @@
 		<key>DefaultValue</key>
 		<string>true</string>
 		<key>Key</key>
-		<string>showCopy</string>
+		<string>show-copy</string>
 		<key>Title</key>
 		<string>Show copy link</string>
 		<key>Type</key>
