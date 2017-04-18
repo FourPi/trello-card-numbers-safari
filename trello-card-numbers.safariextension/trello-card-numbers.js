@@ -263,7 +263,7 @@ window.onload = function(){
     var pageUrl = document.location.href;
     var matches = pageUrl.match(cardUrlRegex);
     if (matches != null && matches.length !== 0) {
-        var num = getCardNumberFromUrl(pageUrl);
+        var num = '#' + getCardNumberFromUrl(pageUrl);
         addNumberToLightboxWhenReady(num);
     }
 
